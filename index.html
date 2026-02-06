@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Celi ⭐ - Mi Estrellita Viviente</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+/* VARIABLES Y RESET */
+:root {
+  --rosa-principal: #ff4f9a;
+  --rosa-suave: #ff9ad1;
+  --rosa-neon: #ff77c8;
+  --rosa-oscuro: #ff1e7a;
+  --azul-profundo: #05010a;
+  --azul-cielo: #140821;
+  --blanco-perla: #f5d9ec;
+  --dorado: #ffd700;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: radial-gradient(circle at top, var(--azul-cielo), var(--azul-profundo));
+  color: var(--blanco-perla);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* CIELO ESTRELLADO MÁGICO */
+.stars-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: twinkle 5s infinite alternate;
+}
+
+.star.big {
+  width: 4px;
+  height: 4px;
+  background: var(--dorado);
+  box-shadow: 0 0 10px var(--dorado);
+}
+
+.star.medium {
+  width: 2px;
+  height: 2px;
+  background: white;
+  box-shadow: 0 0 6px white;
+}
+
+.star.small {
+  width: 1px;
+  height: 1px;
+  background: var(--rosa-suave);
+}
+
+.star.celi-star {
+  width: 6px;
+  height: 6px;
+  background: var(--rosa-neon);
+  box-shadow: 0 0 20px var(--rosa-neon), 0 0 40px var(--rosa-principal);
+  animation: celi-star-twinkle 3s infinite alternate;
+}
+
+.moon {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #fff8e1, #ffd54f);
+  border-radius: 50%;
+  top: 10%;
+  right: 10%;
+  box-shadow: 0 0 50px rgba(255, 213, 79, 0.4);
+  opacity: 0.7;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes celi-star-twinkle {
+  0% { opacity: 0.4; transform: scale(1); box-shadow: 0 0 10px var(--rosa-neon); }
+  100% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 30px var(--rosa-neon), 0 0 60px var(--rosa-principal); }
+}
+
+/* CARTA QUE SE ABRE - EFECTO REALISTA */
+.letter-cover {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  animation: fadeIn 1.5s ease;
+}
+
+.envelope-wrapper {
+  perspective: 1000px;
+  margin-bottom: 2rem;
+}
+
+.envelope {
+  width: 280px;
+  height: 190px;
+  background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-oscuro));
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  cursor: pointer;
+}
+
+.envelope.flipped {
+  transform: rotateX(180deg);
+}
+
+.envelope-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-oscuro));
+}
+
+.envelope-front::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--rosa-suave);
+  clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+  border-radius: 12px;
+}
+
+.envelope-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  background: linear-gradient(135deg, var(--rosa-oscuro), var(--rosa-principal));
+  transform: rotateX(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.open-btn {
+  margin-top: 2rem;
+  padding: 1.2rem 3rem;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-oscuro));
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.open-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.open-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.open-btn:hover::before {
+  left: 100%;
+}
+
+/* PÁGINAS CON TRANSICIONES SUAVES */
+.page {
+  width: 100%;
+  min-height: 100vh;
+  display: none;
+  padding: 2rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: opacity 1s ease, transform 1s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.page.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page.previous {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+.page.next {
+  transform: translateY(50px);
+  opacity: 0;
+}
+
+/* TIPOGRAFÍA ROMÁNTICA */
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(3.5rem, 8vw, 5.5rem);
+  color: var(--rosa-suave);
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 20px rgba(255, 158, 209, 0.8);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--dorado);
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+p {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  max-width: 800px;
+  line-height: 1.8;
+  color: var(--blanco-perla);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.highlight {
+  color: var(--rosa-neon);
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(255, 119, 200, 0.5);
+}
+
+/* FOTO CON EFECTO EMOCIONAL */
+.photo-container {
+  position: relative;
+  margin: 2.5rem auto;
+}
+
+.foto-celi {
+  width: 250px !important;
+  height: 250px !important;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid transparent;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 40px rgba(255, 120, 200, 0.8);
+  animation: heartbeat 2s infinite, gentle-float 6s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.photo-frame {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  border: 3px solid var(--rosa-suave);
+  border-radius: 50%;
+  animation: rotate-frame 20s linear infinite;
+  z-index: 1;
+}
+
+.photo-glow {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  right: -30px;
+  bottom: -30px;
+  background: radial-gradient(circle, transparent 30%, rgba(255, 77, 154, 0.2) 70%);
+  border-radius: 50%;
+  z-index: 0;
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(0.5deg); }
+}
+
+@keyframes rotate-frame {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* BOTONES CON MEJOR RESPONSIVE */
+.button-container {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn {
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg, var(--rosa-principal), var(--rosa-oscuro));
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  min-width: 180px;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+  z-index: -1;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, rgba(255, 79, 154, 0.2), rgba(255, 30, 122, 0.3));
+  border: 2px solid var(--rosa-principal);
+}
+
+.btn-small {
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  min-width: 150px;
+}
+
+/* ELEMENTOS INTERACTIVOS */
+.secret-message {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 120, 200, 0.1);
+  border-radius: 15px;
+  border-left: 4px solid var(--rosa-neon);
+}
+
+.secret-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.love-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 120, 200, 0.3);
+  z-index: 100;
+}
+
+/* RESPONSIVE MEJORADO */
+@media (max-width: 768px) {
+  .page {
+    padding: 1.5rem;
+  }
+  
+  h1 {
+    font-size: clamp(2.8rem, 10vw, 4rem);
+  }
+  
+  p {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+    padding: 0;
+  }
+  
+  .foto-celi {
+    width: 200px !important;
+    height: 200px !important;
+  }
+  
+  .envelope {
+    width: 240px;
+    height: 160px;
+  }
+  
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .love-counter {
+    bottom: 10px;
+    right: 10px;
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
+  
+  .foto-celi {
+    width: 180px !important;
+    height: 180px !important;
+  }
+  
+  .btn {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* ANIMACIONES GENERALES */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-30px); }
+}
+
+.page-transition {
+  animation: pageTransition 1s ease;
+}
+
+@keyframes pageTransition {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- CIELO ESTRELLADO MÁGICO -->
+<div class="stars-container" id="starsContainer"></div>
+
+<!-- AUDIO CON MEJORAS -->
+<audio id="music" loop preload="auto">
+  <source src="romantica.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio HTML5.
+</audio>
+
+<!-- CARTA CERRADA - MEJORADA -->
+<div class="letter-cover" id="cover">
+  <div class="envelope-wrapper">
+    <div class="envelope" id="envelope">
+      <div class="envelope-front"></div>
+      <div class="envelope-back">⭐</div>
+    </div>
+  </div>
+  
+  <h1 style="margin-top: 2rem;">Para mi Estrellita Viviente</h1>
+  <p class="subtitle">Esta página existe solo para ti, mi Celi</p>
+  
+  <button class="open-btn" onclick="startExperience()">
+    Abrir mi corazón para ti 💖
+  </button>
+</div>
+
+<!-- CONTENIDO DE LA CARTA -->
+<!-- PÁGINA 1 - INTRODUCCIÓN PERSONALIZADA -->
+<div class="page" id="page1">
+  <h1>Mi Estrellita Viviente ⭐</h1>
+  <p class="subtitle">Esta carta solo podría ser para ti</p>
+  
+  <p>
+    Esta no es solo una página web...<br>
+    Es un pedacito de mi <span class="highlight">corazón</span> convertido en código,<br>
+    un universo digital creado <span class="highlight">exclusivamente</span> para ti,<br>
+    <strong>mi Celi, mi estrellita viviente</strong>.
+  </p>
+  
+  <p>
+    Porque no fue casualidad,<br>
+    no fue suerte...<br>
+    le doy gracias a Dios <span class="highlight">por haberte conocido</span> y puesto en mi camino.
+  </p>
+  
+  <div class="button-container">
+    <button class="btn" onclick="nextPage()">Tu lugar seguro 💞</button>
+  </div>
+</div>
+
+<!-- PÁGINA 2 - COMPRENSIÓN PROFUNDA -->
+<div class="page" id="page2">
+  <h1>Te entiendo 💖</h1>
+  
+  <p>
+    <span class="highlight">Aunque a veces tus palabras parecen cortantes y frias</span>,<br>
+    yo escucho lo que tu corazón dice en silencio.
+  </p>
+  
+  <p>
+    Sé que no es dureza,<br>
+    es un corazón <span class="highlight">delicado</span> que aprendió a cuidarse.<br>
+    Y conmigo, <strong>nunca tendrá que esconderse</strong>.
+  </p>
+  
+  <p>
+    Respeto tu forma de amar,<br>
+    tu tiempo, tu espacio...<br>
+    porque no quiero cambiarte,<br>
+    quiero <span class="highlight">cuidar tu corazón</span>.
+  </p>
+  
+  <div class="button-container">
+    <button class="btn" onclick="nextPage()">Nuestra historia ✨</button>
+  </div>
+</div>
+
+<!-- PÁGINA 3 - HISTORIA IRREPETIBLE -->
+<div class="page" id="page3">
+  <h1>Nuestro Destino ✨</h1>
+  
+  <p>
+    Lo nuestro no fue planeado,<br>
+    fue <span class="highlight">inesperado, auténtico, real</span>.
+  </p>
+  
+  <p>
+    El corazón decidió por nosotros,<br>
+    y fue la <strong>decisión más sabia</strong> de mi vida.
+  </p>
+  
+  <p>
+    No fue suerte encontrarte...<br>
+    fue el universo conspirando<br>
+    para que dos almas destinadas<br>
+    finalmente se <span class="highlight">encontraran</span>.
+  </p>
+  
+  <div class="button-container">
+    <button class="btn" onclick="nextPage()">Recuerdos vivos 🎬</button>
+  </div>
+</div>
+
+<!-- PÁGINA 4 - ANÉCDOTA CINEMATOGRÁFICA -->
+<div class="page" id="page4">
+  <h1>Esa Noche Mágica 🍝🎶</h1>
+  
+  <p>
+    Recuerdo la cena, la música suave,<br>
+    y de pronto... <span class="highlight">"La Dama y el Vagabundo"</span>.
+  </p>
+  
+  <p>
+    <strong>Esa risa tuya esa noche</strong>...<br>
+    sonó como una promesa de felicidad,<br>
+    como campanitas de alegría pura,<br>
+    como el sonido más bonito que mis oídos escucharon.
+  </p>
+  
+  <p>
+    Quiero ser la razón<br>
+    de <span class="highlight">muchas más risas</span> como esa,<br>
+    durante toda tu vida.
+  </p>
+  
+  <div class="button-container">
+    <button class="btn" onclick="nextPage()">Tu esencia ✨</button>
+  </div>
+</div>
+
+<!-- PÁGINA 5 - FOTO EMOCIONAL -->
+<div class="page" id="page5">
+  <div class="photo-container">
+    <div class="photo-glow"></div>
+    <div class="photo-frame"></div>
+    <img src="celi1.jpg" class="foto-celi" alt="Celi - Mi Estrellita" id="celiPhoto">
+  </div>
+  
+  <h1>Tu Magia ✨</h1>
+  
+  <p>
+    Tu risa ilumina,<br>
+    tu mirada enamora,<br>
+    tu presencia <span class="highlight">transforma</span> todo a mi alrededor.
+  </p>
+  
+  <p>
+    Eres esa combinación perfecta<br>
+    de <strong>fuerza y delicadeza</strong>,<br>
+    de inteligencia y ternura,<br>
+    de realidad y magia.
+  </p>
+  
+  <div class="button-container">
+    <button class="btn" onclick="nextPage()">Mi promesa 💝</button>
+  </div>
+</div>
+
+<!-- PÁGINA 6 - PROMESA AUTÉNTICA -->
+<div class="page" id="page6">
+  <h1>Mi Verdad Contigo 💖</h1>
+  
+  <p>
+    No quiero ser perfecto,<br>
+    quiero ser <span class="highlight">real</span> contigo.
+  </p>
+  
+  <p>
+    Quiero ser tu lugar seguro,<br>
+    tu refugio en días difíciles,<br>
+    tu cómplice en cada locura,<br>
+    tu <strong>amor sincero</strong> sin miedo.
+  </p>
+  
+  <p>
+    Prometo respetar tu tiempo,<br>
+    tu espacio, tu forma de ser...<br>
+    porque te amo <span class="highlight">exactamente como eres</span>.
+  </p>
+  
+  <div class="button-container">
+    <button class="btn" onclick="nextPage()">Final del corazón 💫</button>
+  </div>
+</div>
+
+<!-- PÁGINA 7 - FINAL EMOCIONAL CON SORPRESA -->
+<div class="page" id="page7">
+  <h1>Para Ti, Mi Celi ⭐</h1>
+  
+  <p>
+    Si esta carta te mueve el corazón,<br>
+    <span class="highlight">déjalo sentir</span>...<br>
+    porque fue escrita con el mío.
+  </p>
+  
+  <p>
+    Si quieres llorar, llora.<br>
+    Si quieres reír, ríe.<br>
+    Si quieres enojarte, hazlo.<br>
+    Solo <strong>no te contengas</strong> conmigo.
+  </p>
+  
+  <p>
+    Porque te Amo, mi estrellita viviente,<br>
+    hoy, mañana,<br>
+    y en todas las vidas posibles.
+  </p>
+  
+  <!-- MENSAJE SECRETO -->
+  <div class="secret-message" id="secretMessage">
+    <p style="font-size: 1.5rem; color: var(--dorado);">
+      <strong>Si llegaste hasta aquí...</strong><br>
+      Gracias por existir, por ser tú,<br>
+      por iluminar mi vida con tu estrella.
+      Gracias por ser mi Cantares 8:6
+      de: Tu tesorito morenito 💫
+    </p>
+  </div>
+  
+  <!-- BOTÓN SORPRESA -->
+  <div class="button-container">
+    <button class="btn" onclick="showSecretMessage()">Toca si alguna vez dudas de mi amor 💝</button>
+    <button class="btn btn-secondary btn-small" onclick="restartExperience()">Volver a leer 💞</button>
+  </div>
+  
+  <!-- CONTADOR SIMBÓLICO -->
+  <div class="love-counter" id="loveCounter">
+    Días desde que empezó nuestra historia: <span id="daysCount">0</span> 💖
+  </div>
+</div>
+
+<script>
+// VARIABLES GLOBALES
+let currentPage = 0;
+const totalPages = 7;
+let musicStarted = false;
+const startDate = new Date("2025-12-30T00:00:00-03:00");
+// INICIALIZAR ESTRELLAS MÁGICAS
+function initStars() {
+  const container = document.getElementById('starsContainer');
+  const starCount = 200;
+  
+  // Crear luna
+  const moon = document.createElement('div');
+  moon.className = 'moon';
+  container.appendChild(moon);
+  
+  // Crear estrella especial de Celi
+  const celiStar = document.createElement('div');
+  celiStar.className = 'star celi-star';
+  celiStar.style.left = '20%';
+  celiStar.style.top = '30%';
+  celiStar.style.animationDelay = '0s';
+  container.appendChild(celiStar);
+  
+  // Crear constelaciones (estrellas grandes)
+  for (let i = 0; i < 15; i++) {
+    const star = document.createElement('div');
+    star.className = 'star big';
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.animationDelay = `${Math.random() * 5}s`;
+    container.appendChild(star);
+  }
+  
+  // Crear estrellas medianas
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+    star.className = 'star medium';
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.animationDelay = `${Math.random() * 5}s`;
+    container.appendChild(star);
+  }
+  
+  // Crear estrellas pequeñas
+  for (let i = 0; i < 105; i++) {
+    const star = document.createElement('div');
+    star.className = 'star small';
+    star.style.left = `${Math.random() * 100}%`;
+    star.style.top = `${Math.random() * 100}%`;
+    star.style.animationDelay = `${Math.random() * 5}s`;
+    container.appendChild(star);
+  }
+  
+  // Hacer estrellas interactivas
+  container.addEventListener('click', function(e) {
+    createInteractiveStar(e.clientX, e.clientY);
+  });
+  
+  container.addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    createInteractiveStar(touch.clientX, touch.clientY);
+  });
+}
+
+// ESTRELLA INTERACTIVA AL TOCAR
+function createInteractiveStar(x, y) {
+  const star = document.createElement('div');
+  star.className = 'star celi-star';
+  star.style.left = `${x}px`;
+  star.style.top = `${y}px`;
+  star.style.position = 'fixed';
+  star.style.zIndex = '1000';
+  star.style.animation = 'celi-star-twinkle 1.5s ease-out forwards';
+  
+  document.body.appendChild(star);
+  
+  // Remover después de la animación
+  setTimeout(() => {
+    star.remove();
+  }, 1500);
+}
+
+// INICIAR EXPERIENCIA COMPLETA
+function startExperience() {
+  const cover = document.getElementById('cover');
+  const envelope = document.getElementById('envelope');
+  const music = document.getElementById('music');
+  
+  // Animación de sobre abriéndose
+  envelope.classList.add('flipped');
+  
+  // Sonido de carta (simulado con timeout)
+  setTimeout(() => {
+    // Efecto visual de brillo
+    envelope.style.boxShadow = '0 0 60px rgba(255, 77, 154, 0.8)';
+  }, 600);
+  
+  // Desvanecer portada y mostrar primera página
+  setTimeout(() => {
+    cover.style.animation = 'fadeOut 1.5s ease forwards';
+    
+    setTimeout(() => {
+      cover.style.display = 'none';
+      showPage(1);
+      
+      // Iniciar música con fade in
+      if (!musicStarted) {
+        music.volume = 0;
+        music.play();
+        musicStarted = true;
+        
+        // Fade in de la música
+        let vol = 0;
+        const fadeIn = setInterval(() => {
+          if (vol < 0.7) {
+            vol += 0.05;
+            music.volume = vol;
+          } else {
+            clearInterval(fadeIn);
+          }
+        }, 100);
+      }
+    }, 1500);
+  }, 1200);
+}
+
+// MOSTRAR PÁGINA CON TRANSICIÓN
+function showPage(pageNumber) {
+  const currentActive = document.querySelector('.page.active');
+  const nextPage = document.getElementById(`page${pageNumber}`);
+  const music = document.getElementById('music');
+  
+  if (currentActive) {
+    currentActive.classList.remove('active');
+    currentActive.classList.add('previous');
+    
+    setTimeout(() => {
+      currentActive.classList.remove('previous');
+    }, 1000);
+  }
+  
+  // Sincronizar música con páginas clave
+  if (pageNumber === 4 || pageNumber === 7) {
+    music.volume = 0.8;
+  } else if (pageNumber === 1) {
+    music.volume = 0.5;
+  }
+  
+  // Pequeña pausa antes del final
+  if (pageNumber === 7) {
+    setTimeout(() => {
+      music.volume = 0.3;
+      setTimeout(() => {
+        music.volume = 0.7;
+      }, 500);
+    }, 500);
+  }
+  
+  // Mostrar nueva página
+  setTimeout(() => {
+    nextPage.classList.add('active');
+    nextPage.classList.add('page-transition');
+    
+    setTimeout(() => {
+      nextPage.classList.remove('page-transition');
+    }, 1000);
+    
+    currentPage = pageNumber;
+    
+    // Actualizar contador en la última página
+    if (pageNumber === 7) {
+      updateLoveCounter();
+    }
+  }, 300);
+}
+
+// AVANZAR PÁGINA
+function nextPage() {
+  if (currentPage < totalPages) {
+    showPage(currentPage + 1);
+  }
+}
+
+// MOSTRAR MENSAJE SECRETO
+function showSecretMessage() {
+  const secretMessage = document.getElementById('secretMessage');
+  secretMessage.classList.add('show');
+  
+  // Efecto visual adicional
+  const buttons = document.querySelectorAll('.btn');
+  buttons.forEach(btn => {
+    btn.style.transform = 'scale(1.02)';
+    btn.style.boxShadow = '0 0 25px rgba(255, 77, 154, 0.6)';
+    
+    setTimeout(() => {
+      btn.style.transform = '';
+      btn.style.boxShadow = '';
+    }, 1000);
+  });
+  
+  // Crear lluvia de estrellas
+  for (let i = 0; i < 15; i++) {
+    setTimeout(() => {
+      createInteractiveStar(
+        Math.random() * window.innerWidth,
+        Math.random() * window.innerHeight
+      );
+    }, i * 100);
+  }
+}
+
+// ACTUALIZAR CONTADOR DE AMOR
+function updateLoveCounter() {
+  const today = new Date();
+  const timeDiff = today.getTime() - startDate.getTime();
+  const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24));
+
+  let currentCount = 0;
+  const increment = Math.ceil(daysDiff / 100);
+
+  const counter = setInterval(() => {
+    currentCount += increment;
+    if (currentCount >= daysDiff) {
+      currentCount = daysDiff;
+      clearInterval(counter);
+    }
+    document.getElementById('daysCount').textContent = currentCount;
+  }, 20);
+}
+
+// REINICIAR EXPERIENCIA
+function restartExperience() {
+  const pages = document.querySelectorAll('.page');
+  const cover = document.getElementById('cover');
+  const envelope = document.getElementById('envelope');
+  const secretMessage = document.getElementById('secretMessage');
+  const music = document.getElementById('music');
+  
+  // Ocultar todas las páginas
+  pages.forEach(page => {
+    page.classList.remove('active', 'previous', 'next');
+  });
+  
+  // Ocultar mensaje secreto
+  secretMessage.classList.remove('show');
+  
+  // Reiniciar sobre
+  envelope.classList.remove('flipped');
+  envelope.style.boxShadow = '';
+  
+  // Mostrar portada
+  cover.style.display = 'flex';
+  cover.style.animation = 'fadeIn 1.5s ease forwards';
+  
+  // Reiniciar música
+  music.volume = 0.7;
+  
+  currentPage = 0;
+}
+
+// INICIALIZAR AL CARGAR LA PÁGINA
+window.addEventListener('DOMContentLoaded', () => {
+  initStars();
+  updateLoveCounter();
+  
+  // Mejorar responsividad en resize
+  window.addEventListener('resize', () => {
+    // Reajustar posición de estrellas en móviles
+    if (window.innerWidth < 768) {
+      const stars = document.querySelectorAll('.star.big, .star.celi-star');
+      stars.forEach(star => {
+        const currentLeft = parseFloat(star.style.left);
+        if (currentLeft > 80) {
+          star.style.left = `${currentLeft - 10}%`;
+        }
+      });
+    }
+  });
+  
+  // Iniciar con configuración para móviles
+  if (window.innerWidth < 768) {
+    document.querySelectorAll('p').forEach(p => {
+      p.style.padding = '0 0.5rem';
+    });
+  }
+});
+</script>
+
+</body>
+</html>
